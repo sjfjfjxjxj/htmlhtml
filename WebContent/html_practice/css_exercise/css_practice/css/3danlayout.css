@@ -1,0 +1,33 @@
+#header{
+    background-color: wheat;
+    height : 100px;
+    width : 100%;
+}
+#main{
+    height : 300px;
+    width : 100%;
+   
+}
+    #left{
+        height : inherit;
+        width: 15%;
+        background-color : royalblue;
+        float : left;
+    }
+    #center{
+        height : inherit;
+        width : 60%;
+        background-color: tomato;
+        float : left;
+    }
+    #right{
+        height : inherit;
+        width: 25%;
+        background-color: cornflowerblue;
+        float : right;
+    }
+#footer{
+    height : 50px;
+    width : 100%;
+    background-color: blanchedalmond;
+}    
