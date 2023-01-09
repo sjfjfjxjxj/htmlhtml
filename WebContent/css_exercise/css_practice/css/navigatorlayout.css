@@ -1,0 +1,52 @@
+#header{
+    height : 200px;
+    width : 100%;
+}
+    #header-layer1{
+        height : inherit;
+        width :20%;
+        background-color: rgb(100, 120, 179);
+        float : left;
+    }
+    #header-layer2{
+        height : inherit;
+        width :60%;
+        background-color: rosybrown;
+        float : left;
+    }
+    #header-layer3{
+        height : inherit;
+        width :20%;
+        background-color: rgb(100, 120, 179);
+        float : right;
+    }
+#navi{
+    height : 50px;
+    background-color : rgb(101, 138, 126);
+}    
+#main{
+    height : 500px;
+    background-color: bisque;
+}
+    #main-layer1{
+        height : inherit;
+        background-color: antiquewhite;
+        width : 15%;
+        float : left;
+    }
+    #main-layer2{
+        height : inherit;
+        background-color: bisque;
+        width : 60%;
+        float : left;
+    }
+    #main-layer3{
+        height : inherit;
+        background-color: antiquewhite;
+        width : 25%;
+        float : right;
+    }
+#footer{
+    height : 100px;
+    background-color: blanchedalmond;
+}

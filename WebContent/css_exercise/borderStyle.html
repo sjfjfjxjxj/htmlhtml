@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테두리 관련 스타일</title>
+    <style>
+        div{
+            width : 50px;
+            height : 50px;
+            border-width : 3px;           
+        }
+        .border-test1{
+            border-style: none;
+        }
+        .border-test2{
+            border-style: hidden;
+            box-shadow: 5px 5px 3px grey;
+        }
+        .border-test3{
+            border-style : dotted;
+        }
+        .border-test4{
+            border-style: dashed;
+        }
+        .border-test5{
+            border-style: double;
+        }
+        .border-test6{
+            border-style: groove;
+            border-top-left-radius: 50px; /*뾰족한 네모를 둥그렇게...방향설정 가능*/
+        }
+        .border-test7{
+            border-style: inset; /*음각너낌*/
+            border-bottom-right-radius: 50px;
+        }
+        .border-test8{
+            border-style : outset; /*양각*/
+            border-top-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+        .border-test9{
+            border-style: ridge;
+            box-shadow: 5px 5px 3px 2px grey;
+        }
+        .border-test10{
+            border-style: solid;
+            box-shadow: 5px 5px 3px 2px grey;
+        }
+        table{
+            width : 400px;
+            height : 400px;
+        }
+        .dash1 {
+            border: 3px;
+            border-style: dashed; 
+        }
+        #blue {
+            border: 3px blue dashed;
+            border-top-style: solid;
+            border-left-style: solid;
+            border-top-left-radius: 20px;
+           
+        }
+        #green{
+            border: 3px green dashed;
+            border-top-style: solid;
+            border-right-style: solid;
+            border-top-right-radius: 20px;
+        }
+        #yellow{
+            border: 3px yellow dashed;
+            border-bottom-style: solid;
+            border-left-style: solid;
+            border-bottom-left-radius: 20px;
+        }
+        #red{
+            border: 3px red dashed;
+            border-bottom-style: solid;
+            border-right-style: solid;
+            border-bottom-right-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td id="blue"></td>
+            <td class="dash1"></td>
+            <td id="green"></td><br>
+        </tr>
+        <tr>
+            <td class="dash1"></td>
+            <td class="dash1"></td>
+            <td class="dash1"></td><br>
+        </tr>
+        <tr>
+            <td id="yellow"></td>
+            <td class="dash1"></td>
+            <td id="red"></td>
+        </tr>
+    
+    </table>
+    <h1>테두리 관련 스타일</h1>
+<h3>border-style:none</h3>
+<div class="border-test1"></div>
+<h3>border-style:hidden &amp; box-shadow:5px 5px 3px 2px gray</h3>
+<div class="border-test2"></div>
+<h3>border-style:dotted</h3>
+<div class="border-test3"></div>
+<h3>border-style:dashed</h3>
+<div class="border-test4"></div>
+<h3>border-style:double</h3>
+<div class="border-test5"></div>
+<h3>border-style:groove &amp; border-top-left-radius:50px</h3>
+<div class="border-test6"></div>
+<h3>border-style:inset &amp; border-bottom-right-radius:50px</h3>
+<div class="border-test7"></div>
+<h3>border-style:outset &amp; border-top-left-radius:50px &amp; border-bottom-right-radius:50px</h3>
+<div class="border-test8"></div>
+<h3>border-style:ridge &amp; box-shadow:5px 5px 3px 2px gray</h3>
+<div class="border-test9"></div>
+<h3>border-style:solid &amp; box-shadow:5px 5px 3px 2px gray</h3>
+<div class="border-test10"></div>
+<br><br><br><br>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
