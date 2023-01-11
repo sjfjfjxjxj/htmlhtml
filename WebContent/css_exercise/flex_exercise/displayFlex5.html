@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display : flex part1</title>
+    <style>
+        .container {
+             
+            background-color: #eee;
+            border : 1px solid #222;
+            display : flex; /*인라인블록처럼 맨들어진다*/
+            margin-bottom: 20px;
+            justify-content: flex-start;
+            /*row(기본값), row-reverse, column, column-reverse*/
+            align-items: stretch; /*기본*/ 
+        }
+     /*flex는 아이템이 아니라 컨테이너에 늘 적용하기!!!!*/
+ 
+ p{
+     color : #fff;
+     text-align: center;
+ }
+        .box{
+            background-color: #222;
+            --width : 80px;
+            margin : 5px;
+            padding : 5px 45px;
+        }
+       #opt1{
+        flex-flow: wrap; /*이거 없으면 브라우저 크기에 따라서 박스가 튀어나감. 이거 있음 밑으로내려감*/
+       }
+       #opt2{
+        flex-flow: nowrap;/*기본값*/
+       }
+       
+
+    </style>
+</head>
+<body>
+    <div class="container" id="opt1">
+        <div class="box">
+            <p>1</p>
+        </div>
+        <div class="box">
+            <p>2</p>
+        </div>
+        <div class="box" >
+            <p>3</p>
+        </div>
+        <div class="box">
+            <p>4</p>
+        </div>
+        <div class="box">
+            <p>5</p>
+        </div>
+        <div class="box">
+            <p>6</p>
+        </div>
+    </div>
+    <div class="container" id="opt2">
+        <div class="box">
+            <p>1</p>
+        </div>
+        <div class="box">
+            <p>2</p>
+        </div>
+        <div class="box" >
+            <p>3</p>
+        </div>
+        <div class="box">
+            <p>4</p>
+        </div>
+        <div class="box">
+            <p>5</p>
+        </div>
+        <div class="box">
+            <p>6</p>
+        </div>
+    </div>
+   
+</body>
+</html>

@@ -7,6 +7,40 @@
     <title>Dom Access</title>
 </head>
 <body>
-    
+        <h2>Javascript를 이용한 HTML태그 접근</h2>
+    <p>자바스크립트를 이용하여 HTML태그를 동적으로 처리하기 위해서는 DOM객체의
+        메소드를 호출하여 접근해야함.
+    </p>
+    <h3>메소드</h3>
+    <p>
+        1. getElementById("아이디명") 
+        : 태그의 id 속성값을 이용해서 태그 요소 객체정보를 가져옴(1개) <br>
+        2. getElementsByName("이름명") : 태그의 name 속성값을 이용해서 태그 요소의 객체 정보를
+        배열에 담아 가져옴(여러개 존재할 수 있음.) <br>
+        3. getElementsByTagName("태그명") : 태그명을 이용해서 태그들의 객체 정보를
+        배열에 담아 가져옴(여러개 존재할 수 있음.) <br>
+    </p>
+    <p id="p11" name="pp">안녕하세요</p>
+    <p id="p22" name="pp">돔객체</p>
+    <p id="p33" name="pp">자바스크립트</p>
+
+    <script>        //document에는 웹문서에 있는게 다들어있어!
+        var pTag1 = document.getElementById("p11"); //"안녕하세요"를 데려오고싶어
+        console.log(pTag1.innerHTML); //.innerHTML은 html태그 사잇값을 가져와줌
+        pTag1.innerHTML = "안녕히가세요"; //오 이거 새로고침하자마자 웨문서에서 바뀜
+        var pTag2 = document.getElementById("p22");
+        pTag2.innerHTML = "DOM OBJECT";
+        var pTag3= document.getElementById("p33");
+        pTag3.innerHTML = "쉬웠어요";
+        var pTags = document.getElementsByName("pp");
+        console.log(pTags); //배열로 가져옴->인덱스로 접근
+        console.log(pTags[0]);
+        console.log(pTags[1]);
+        console.log(pTags[2]);
+        var pTagNames= document.getElementsByTagName("p");
+        console.log(pTagNames);
+        var pTagSelect = document.querySelector("#p11"); //선택자 많이 이용하자
+        console.log(pTagSelect);                       //쿼리셀렉터는 꼮 하나씩만 찝는용도라 #이랑 같이 쓰는거라 봐도 무방!
+    </script>
 </body>
 </html>
