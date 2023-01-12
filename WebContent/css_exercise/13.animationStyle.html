@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width : 100px;
+            height : 100px;
+        }
+        .div-class{
+            margin-left : 100px;
+            background-color: ;
+            animation-name: transAni;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes transAni {
+            0%{
+                background-color:salmon;
+            }
+            100%{
+                background-color: orange;
+                border-radius: 50%;
+                transform: rotateZ(360deg);
+            }
+        }
+        .div2-class{
+            margin : 100px;
+            background-color: gold;
+            animation-name: transRainbow;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes transRainbow{
+            0%{
+                background-color: red;
+            }
+            15%{
+                background-color: orange;
+            }
+            30%{
+                background-color: yellow;
+            }
+            45%{
+                background-color: green;
+            }
+            60%{
+                background-color: blue;
+            }
+            75%{
+                background-color: navy;
+            }
+            100%{
+                background-color: indigo;
+            }
+        }
+        img{
+            width : 300px;
+            margin-left: 100px;
+            border-radius: 0%;
+        }
+        img:hover{
+            animation-name: transForest;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+            
+        }
+        @keyframes transForest{
+            0%{
+                transform: rotateZ(0deg);
+                border: 1px dashed black;
+            }
+            50%{
+                transform: rotateZ(-360deg);
+                border-radius: 40%;
+                border: 1px solid black;
+            }
+        }
+
+        .img_TEACHER{
+            width : 300px;
+            margin-left: 100px;
+           
+            border-radius: 0%;
+        }
+        .img_teacher:hover{
+            animation-name: transForest_teacher;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+        @keyframes transForest_teacher{
+            0%{
+                
+                border: 1px dashed black;
+            }
+            50%{
+                transform: rotateZ(-360deg);
+                border-radius: 40%;
+                border: 1px solid black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>애니메이션</h1>
+<div class="div-class"></div><br>
+<div class="div2-class"></div>
+<br><br><br>
+<img src="./img/forest1.PNG" alt="숲">
+<img src="./img/tower1.PNG"" id="img_teacher">
+<br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

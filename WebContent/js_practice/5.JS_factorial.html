@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팩토리얼 계산하기</title>
+    <style>
+        div, h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>while문을 사용한 팩토리얼 계산</h1>
+    <div id="printOne"></div>
+
+    <script>
+       var num = prompt("숫자 입력하세요");
+       var i =1; //인덱스값
+       var result = 1;
+       var divTag = document.querySelector("#printOne");
+       var msgModel=""; // 왜 divTag에는 .innerHTML까지 못붙이는거야?
+       if(num != null){
+           while(i<=num){
+                   result*=i
+               i++;
+           }
+           msgModel=num+"!="+result;
+       } else{
+        msgModel="값을 입력하지 않았습니다";
+       }
+       divTag.innerHTML=msgModel;
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테이블만들기</title>
+    <style>
+        table{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td{
+            width: 50px;
+            height : 50px;
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>자동 테이블 만들기</h1>
+    
+    <script>
+        document.write("<p>test</p>");
+        var row = prompt("테이블 행의 개수 입력");
+        var column = prompt("테이블 열의 개수 입력");
+        var count = 1; //★이거구나...이걸 몰랏다
+        //document.write("table>tr*"+row+">td*"+column); 뭐냐 이멧 안되냐
+        document.write("<table>");
+        for(var i=1; i<=row; i++){
+            document.write("<tr>");
+            for(var e=1; e<=column; e++){
+                document.write("<td>"+count+"</td>");
+                count++;
+            }
+            document.write("</tr>");
+            
+        }
+        document.write("</table>");
+
+    </script>
+</body>
+</html>

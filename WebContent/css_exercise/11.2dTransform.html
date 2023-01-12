@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2차원 변형</title>
+    <style>   /*hover: 마우스 댔을때, active: 클릭했ㅇ르때*/
+        img{
+            width : 250px;
+            transition-duration : 4s; /*여따 효과 주면 왔다갔다에 시간 동일함. 호버에 트랜지션 먹이면 마우스갖다댈때만 됨*/
+        }
+        .trans1:hover{
+            transform: translateX(50px);
+            --transition-duration: 1s;
+        }
+        .trans2:hover{
+            transform: translateY(-50px)
+        }
+        .trans3:hover{
+            transform: translate(50px, 50px);
+        }
+        .trans4:active{
+            transform: scaleX(2);
+        }
+        .trans5:active{
+            transform: scaleY(2);
+        }
+        .trans6:active{
+            padding-left: 50px;
+            transform: scale(1.5);
+        }
+        .trans7:active{
+            transform: rotate(100deg);
+           --transition-duration: 4s;
+        }
+        .trans8:active{
+            transform: skewX(-45deg);  /*가로축은 가만있고 */
+        }
+        .trans9:active{
+            transform: skewY(40deg);/*세로축은 가만있고 */
+        }
+        .trans10:active{
+            transform: skew(10deg, 10deg); /*쫄깃해짐*/
+        }
+    </style>
+</head>
+<body>
+    <h1>2차원 변형</h1>
+    <h3>좌우로 움직이기</h3>
+    <img src="./img/flower1.PNG" class="trans1">
+    <h3>위아래로 움직이기</h3>
+    <img src="./img/flower2.PNG" class="trans2">
+    <h3>대각선으로 움직이기</h3>
+    <img src="./img/flower3.PNG" class="trans3">
+    <h3>가로로 확대 축소</h3>
+    <img src="./img/flower4.PNG" class="trans4">
+    <h3>세로로 확대 축소</h3>
+    <img src="./img/flower5.PNG" class="trans5">
+    <h3>전체 확대 축소</h3>
+    <img src="./img/river1.PNG" class="trans6">
+    <h3>지정한 각도만큼 회전</h3>
+    <img src="./img/river2.PNG" class="trans7">
+    <h3>지정한 각도만큼 가로로 뒤틀기</h3>
+    <img src="./img/city1.PNG" class="trans8">
+    <h3>지정한 각도만큼 세로로 뒤틀기</h3>
+    <img src="./img/tower1.PNG" class="trans9">
+    <h3>지정한 각도만큼 전체 뒤틀기</h3>
+    <img src="./img/forest1.PNG" class="trans10">
+
+
+</body>
+</html>

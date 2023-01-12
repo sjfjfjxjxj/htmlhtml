@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자리배치도</title>
+    <style>
+        table, td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td{
+            padding: 5px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var customer= prompt("입장객은 몇명?");
+        var col= prompt("한 줄에 몇명씩 앉아?");
+        var row= Math.ceil(customer/col);//아니면 parseInt(customer/col)+1
+       // var leftover= nanugi%row;
+        var count = 1;
+        document.write("<table>");
+        for(var i=1; i<=row; i++){
+            document.write("<tr>");
+            for(var e=1; e<=col; e++){
+                    if(count>customer) break; //이게 없으면 필요없는 자리들도 나와버림!
+                    document.write("<td> 좌석 "+count+"</td>");
+                    count++;                         
+            }
+            //document.write("<td>leftover</td>");
+            document.write("</tr>");
+        }    
+        document.write("</table>");
+        
+
+    </script>
+</body>
+</html>
