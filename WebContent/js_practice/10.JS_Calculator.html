@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기 실습</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <h2>간이 계산기 만들기</h2>
+    
+        첫번째값 : <input type="text" id="input1"><br>
+        두번째값 : <input type="text" id="input2"><br>
+        <input type="button" value="+" onclick="plus()">
+        <input type="button" value="-" onclick="minus()">
+        <input type="button" value="x" onclick="by()">
+        <input type="button" value="/" onclick="nanugi()">
+        <input type="button" value="%" onclick="remainder()">
+        <br><br>
+        계산결과 : <span id="result"></span>
+        <hr>
+
+        <script>
+            function plus(){
+                //넣을 공간
+                var resultTag=document.querySelector("#result");
+                var input1Tag= document.querySelector("#input1");
+                var input2Tag= document.querySelector("#input2");
+                resultTag.innerHTML= parseInt(input1Tag.value)+parseInt(input2Tag.value);
+            }
+            function minus(){
+                var resultTag=document.querySelector("#result");
+                var input1Tag= document.querySelector("#input1");
+                var input2Tag= document.querySelector("#input2");
+                resultTag.innerHTML= parseInt(input1Tag.value)-parseInt(input2Tag.value);
+            }
+            function by(){
+                var resultTag=document.querySelector("#result");
+                var input1Tag= document.querySelector("#input1");
+                var input2Tag= document.querySelector("#input2");
+                resultTag.innerHTML= parseInt(input1Tag.value)*parseInt(input2Tag.value);
+            }
+            function nanugi(){
+                var resultTag=document.querySelector("#result");
+                var input1Tag= document.querySelector("#input1");
+                var input2Tag= document.querySelector("#input2");
+                resultTag.innerHTML= parseInt(input1Tag.value)/parseInt(input2Tag.value);
+            }
+            function remainder(){
+                var resultTag=document.querySelector("#result");
+                var input1Tag= document.querySelector("#input1");
+                var input2Tag= document.querySelector("#input2");
+                resultTag.innerHTML= parseInt(input1Tag.value)%parseInt(input2Tag.value);
+            }
+
+        </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>속성값(style) 변경 실습</title>
+    <style>
+        div{
+            border: 1px solid black;
+            background-color: black;
+            height : 100px;
+            width : 100px;
+        }
+    </style>
+</head>
+<body>
+    <h3>문제1. 색상 선택 후 변경 버튼을 클릭하면 색상이 변하도록 만들어보라.</h3>
+    <div id="div1"></div>
+    <input type="color" name="" id="">
+    <button onclick="colorChange()">변경</button>
+    <hr><hr><hr>
+    <h3>문제2. 버튼에 따라 크기 조절이 가능하게 만들어보라.</h3>
+    <div id="div2"></div>
+    <button onclick="halfSize()">반으로 만들기</button>
+    <button onclick="onSize()">원본</button>
+    <button onclick="doubleSize()">두배로 만들기</button>
+    
+    <script>
+        //문1
+        function colorChange(){
+            //선택한 색깔값 가져오기
+            //console.log(document.querySelector("[type=color]").value);
+            //변경할 대상 선택하기(div)
+            //console.log(document.querySelector("#div1").style.backgroundColor);
+            //대상에 색깔넣기
+            //document.querySelector("#div1").style.backgroundColor=document.querySelector("[type=color]").value;
+            //정리
+            var divTag=document.querySelector("#div1");
+            var colorTag=document.querySelector("[type=color]");
+            divtag.style.backgroundColor = colorTag.value;
+        }
+
+        function halfSize(){
+            //변경 대상 선택
+            var divTag=document.querySelector("#div2");
+            //divTag.width="50px" 이렇게 안됨
+            divTag.style.width ="50px";
+            divTag.style.height="50px";
+        }
+        function onSize(){
+            var divTag=document.querySelector("#div2");
+            divTag.style.width="100px";
+            divTag.style.height="100px";
+        }
+        function doubleSize(){
+            var divTag=document.querySelector("#div2");
+            divTag.style.width="200px";
+            divTag.style.height="200px";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 배열문제1</title>
+</head>
+<body>
+    <h1> 배열 실습 문제 </h1>
+
+    문제1. 다음 보기에 있는 데이터들은 배열로 받고 하나의 배열로 합치도록 하여라.<br>
+        이때 입력 필드에 배열에 있는 데이터를 전송하면 배열의 alert를 통하여<br>
+        배열의 위치를 알려주고, 없으면 "존재하지 않습니다" 를 알려주어라.<br>
+
+    <fieldset>
+        <legend>보기</legend>
+        <label id="la1">사과,바나나,당근</label><br>
+        <label id="la2">김밥,치즈,떡볶이,햄버거</label><br>
+        <label id="la3">환타,사이다,콜라</label><br>
+        <label id="la4">고양이,강아지</label><br>
+    </fieldset><br>
+        <input type="text" placeholder="찾을 문자열을 입력하세요" size="100" id="text1">
+    <div id="result1"> </div>
+    <button onclick="findItmes();"> 전송 및 처리 </button>
+
+    <br><br>
+    <hr><hr>
+    <br><br>
+    문제2. 다음 보기에 있는 문자열을 가지고 정답과 같이 만들어라. (별도의 문자열을 쓰면 안됨)<br>
+        그리고 출력 부분에 출력하도록 하여라.
+        정답 : "khlove"
+
+    <fieldset>
+        <legend>보기</legend>
+        <label id="stringla1">h k</label><br>
+        <label id="stringla2">e v o l</label><br>
+    </fieldset><br>
+        <p style="border:1px solid red;" id="print">이 부분에 정답이 출력 될 수 있도록 하세요</p>
+    <div id="result1"> </div>
+    <button onclick="goReverse();"> 처리 </button>
+
+    <br><br>
+    <hr><hr>
+    <br><br>
+    문제3. 다음 문자열을 입력 받은 후 출력 버튼 클릭시 모든 입력한 문자열이 출력되도록 만들어라.
+
+    <fieldset>
+        <legend>입력</legend>
+        <input type="text" id="strInput"> <button onclick="input()">입력</button>
+    </fieldset><br>
+        <p style="border:1px solid red;" id="print2">이 부분에 정답이 출력 될 수 있도록 하세요</p>
+    <div id="result1"> </div>
+    <button onclick="showItems();"> 출력 </button>
+
+
+    <script>
+    function findItmes(){ //문1
+        var fruits = document.querySelector("#la1"); //과일문자열을 가져와서
+        var snacks = document.querySelector("#la2");
+        var drinks = document.querySelector("#la3");
+        var pets = document.querySelector("#la4");
+        var fruitsArr = fruits.innerHTML.split(","); //잘라
+        var snacksArr = snacks.innerHTML.split(",");
+        var drinksArr = drinks.innerHTML.split(",");
+        var petsArr = pets.innerHTML.split(",");
+        
+        var concat = fruitsArr.concat(snacksArr).concat(drinksArr).concat(petsArr);
+        //fruitsArr.concat(snacksArr,drinksArr,petsArr)로 써도 되네
+        console.log(concat);
+        
+        var input = document.querySelector("#text1").value; //입력받은걸 가져와서
+        var index=concat.indexOf(input); //글자값만 뺴와서
+        if(index!=-1){ //인덱스가 -1 : 배열의 null값!
+            alert(index);
+        }else{
+            alert("존재안햄");
+        }        
+    }
+    //문2
+    function goReverse(){
+        var la1Arr = document.querySelector("#stringla1").innerHTML.split(" ");
+        var la2Arr = document.querySelector("#stringla2").innerHTML.split(" ");
+        la1Arr.reverse();
+        la2Arr.reverse();      
+        var resultArr = la1Arr.concat(la2Arr);
+        //console.log(resultArr.join(""));
+        document.querySelector("#print").innerHTML=resultArr.join("");
+    }
+
+    //문제3
+    var total = [];
+    function input(){
+        var inputTag = document.querySelector("#strInput");
+        //var total = [];//배열 선언. 근데 누를때마다 초기화해서 추가됨. 그래서 얘를 바깥으로 빼
+        total.push(inputTag.value); //누적합처럼 쓰는 푸시매소드,, 값을계속 집어넣음
+        console.log(total);
+    }
+    function showItems(){
+        var pTag = document.querySelector("#print2");
+        //pTag.innerHTML = total.join(" "); 이렇게하거나(공백 사이로 들어감)
+        pTag.innerHTML = total.toString(); //이렇게 하면 콤마로 나눠짐
+    }
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기 실습</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <h2>간이 계산기 만들기</h2>
+    
+        첫번째값 : <input type="text" id="input1"><br>
+        두번째값 : <input type="text" id="input2"><br>
+        <input type="button" value="+" onclick="calculator('+')">
+        <input type="button" value="-" onclick="calculator('-')">
+        <input type="button" value="x" onclick="calculator('x')">
+        <input type="button" value="/" onclick="calculator('/')">
+        <input type="button" value="%" onclick="calculator('%')">
+        <br><br>
+        계산결과 : <span id="result"></span>
+        <hr>
+
+        <script>
+            
+            function calculator(operator){ 
+                var input1 = Number(document.querySelector("#input1").value);
+                var input2 = Number(document.querySelector("#input2").value);
+                var spanTag=document.querySelector("#result");
+                var result =0; //한번만 쓰고 말거니까 그냥 안에서 선언 ㅇㅇ
+                switch(operator){//연산자를 스위치케이스로 만들어버려!!
+                    case '+': result = input1 + input2; break;
+                    case '-': result = input1 - input2; break;
+                    case 'x': result = input1 * input2; break;
+                    case '/': result = input1 / input2; break;
+                    case '%': result = input1 % input2; break;
+                }
+                spanTag.innerHTML = result;
+            }
+        
+        </script>
+</body>
+</html>
