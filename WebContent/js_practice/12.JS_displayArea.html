@@ -56,13 +56,22 @@
     </div>
     <script>
         var showDiv = function(val){
+            
             console.log(val); //val값에 맞게 각각의 display 속성을 바꿔줘얗ㅁ
-            // var appear = document.querySelectorAll("[type=radio]")
-            // console.log(appear);
-            // var title = appear[0];
-            // var date = appear[1];
-            // var writer = appear[2];
-            //title.("#titlebox").style.display="block";
+            switch (val){
+                case 'title' : document.querySelector("#titleBox").style.display="block"; 
+                                document.querySelector("#dateBox").style.display="none"; 
+                                document.querySelector("#writerBox").style.display="none"; 
+                                break;
+                case 'date' : document.querySelector("#dateBox").style.display="block"; 
+                              document.querySelector("#titleBox").style.display="none"; 
+                              document.querySelector("#writerBox").style.display="none";
+                              break;
+                case 'writer' : document.querySelector("#writerBox").style.display="block"; 
+                                document.querySelector("#titleBox").style.display="none"; 
+                                document.querySelector("#dateBox").style.display="none"; 
+                                break;
+            }
         }
     </script>      
 </body>

@@ -23,6 +23,7 @@ function jsFunc5(){ //난수! 랜덤!
     return Math.floor(Math.random()*100+1);
 }
 
+//리턴 예
 function calculator(num1, num2, operator){
     var result = 0;
     switch(operator){

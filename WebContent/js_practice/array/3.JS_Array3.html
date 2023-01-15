@@ -29,5 +29,24 @@
         </div>
     </fieldset><br>
 
+    <script>
+        function clickDiv(choice){
+           
+            let choices = document.getElementById("div5");
+            
+            console.log(choices);
+            for(i=0; i<5; i++){
+                switch(choice){
+                    case 'red' : document.querySelector("#red").style.display="none"; break;
+                    case 'blue' : document.querySelector("#blue").style.display="none"; break;
+                    case 'green' : document.querySelector("#green").style.display="none"; break;
+                    case 'pink' : document.querySelector("#pink").style.display="none"; break;
+                    case 'yellow': document.querySelector("#yellow").style.display="none"; break;
+                }
+                choices[i] = document.querySelector(choice);
+                console.log(choices[0]+choices[1]); //이게 아닌거같은데 뭘까^_T
+            }
+        }
+    </script>
 </body>
 </html>
