@@ -30,23 +30,40 @@
     </fieldset><br>
 
     <script>
-        function clickDiv(choice){
-           
-            let choices = document.getElementById("div5");
-            
-            console.log(choices);
-            for(i=0; i<5; i++){
-                switch(choice){
-                    case 'red' : document.querySelector("#red").style.display="none"; break;
-                    case 'blue' : document.querySelector("#blue").style.display="none"; break;
-                    case 'green' : document.querySelector("#green").style.display="none"; break;
-                    case 'pink' : document.querySelector("#pink").style.display="none"; break;
-                    case 'yellow': document.querySelector("#yellow").style.display="none"; break;
+        var clickArr = []; //얘가 함수 안에 있으면 배열 담아도 계속 초기화됨
+        var index = 0;
+        var str =""; //정렬시킨 값의 코드 전체 
+        function clickDiv(color){         
+            var selected = document.querySelector("#"+color);
+                                                //매개변수랑 아이디가 같기때문에 가넝
+            //clickArr.push(selected); 인덱스 없이 하면 이렇게. 우린 배열에 저장해야함
+            clickArr[index] = selected; //배열에 저장하고↓
+            selected.style.display="none";  //안보이게 하기
+            index++;
+            if(index == 5){ // 다 담으면 배열 출력
+                for(var i =0; i<index; i++){
+                    clickArr[i].style.display = "block";
+                    //배열에 저장된 값 꺼내오기
+                    //그다음 누적저장
+                    str += clickArr[i].outerHTML;
                 }
-                choices[i] = document.querySelector(choice);
-                console.log(choices[0]+choices[1]); //이게 아닌거같은데 뭘까^_T
+                document.querySelector("#div5").innerHTML = str;
+                //여러번할수있게끔 다시 초기화해주기
+                index=0;
+                str="";
             }
         }
+            //for(i=0; i<5; i++){
+                //switch(color){
+                   // case 'red' : document.querySelector("#red").style.display="none"; break;
+                    //case 'blue' : document.querySelector("#blue").style.display="none"; break;
+                    //case 'green' : document.querySelector("#green").style.display="none"; break;
+                    //case 'pink' : document.querySelector("#pink").style.display="none"; break;
+                    //case 'yellow': document.querySelector("#yellow").style.display="none"; break;
+                //}이거아님
+                
+                
+            //}
     </script>
 </body>
 </html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> 객체 실습 문제 </h1>
+    
+    문제1. <br>
+    다음 입력 버튼을 클릭하면 이름,나이,주소를 prompt로 입력 받은 후 입력 받은 정보를 <br>
+    member 라는 객체에 저장하여라.<br>
+    이 후 출력 버튼을 클릭하면 member 객체 안에 있는 정보를 <br>
+    출력 창에 출력되도록 만들어라.<br>
+    (입력을 받지 않은 상태에서 출력 버튼 클릭시 입력을 먼저 해달라는 알림을 띄우도록 하여라)<br>
+    ex) <br>
+    이름 : OOO <br>
+    나이 : OO세 <br>
+    주소 : XXX XXX XXXX ... <br>
+    
+    <fieldset>
+        <legend style="color:red;">출력창</legend>
+        <div id="print">
+            
+        </div>
+    </fieldset><br>
+    
+    <button onclick="insertMember();">입력</button>
+    <button onclick="printMember();">출력</button>
+        
+
+    <script>
+        var member = new Object();
+        var insertMember = function(){
+            member.name = prompt();
+            member.age = prompt();
+            member.address = prompt();
+            //var name = prompt("이름 입력");       
+            //member.name = name;
+           //이런식으로 굳이 선언할 필요가 없나보다.
+           
+            //return member;ⓐ버튼이 하나로 작동될땐 이렇게 리턴해서
+        }       
+        var printMember = function(){
+            //var member = insertMember();ⓑ이렇게 쓰면 된대
+            for(var keyword in member){
+                document.querySelector("#print").innerHTML+=keyword +" : " + member[keyword] +"<br>";
+
+            }
+        }
+    </script>
+
+
+</body>
+</html>

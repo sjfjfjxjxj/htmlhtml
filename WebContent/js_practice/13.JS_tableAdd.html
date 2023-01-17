@@ -42,18 +42,40 @@
             <!-- 입력값들을 추가해 나감 -->
             
         </table>
+    </p>
 
     <script>
-        function addUser(){
-            document.querySelector("#tb1").innerHTML +=
-            <tr>
-                <th>document.querySelector("#name").value</th>
-                <th>document.querySelector("#age").value</th>
-                <th>document.querySelector("[type=radio]").value</th>
-                <th>document.querySelector("#phone").value</th>
-                <th>document.querySelector("[type=checkbox]").value</th>
-            <tr>   
-        
+        var addUser =function(){
+            var name=document.querySelector("#name").value;
+            var age=document.querySelector("#age").value;
+            //라디오버튼!! 체크드 가져오기
+            var gender = document.querySelectorAll("[name=gender]");
+            if(gender[0].checked){
+                gender="남";
+            }else if(gender[1].checked){
+                gender = "여";
+            }
+            var phone=document.querySelector("#phone").value;
+            //체크박스는 여러개니까 포문돌려
+            var hobby = document.querySelectorAll("[name=hobby]");
+            hobbyVal="";
+            for(var i = 0; i<hobby.length; i++){
+                if(hobby[i].checked){
+                    hobbyVal = hobby[i].value + " ";
+                }
+            }
+
+            var tableTag = document.querySelector("#tbl");
+            tableTag.innerHTML+="<tr><td>"+name+"</td><td>"+age+"</td><td>"+gender+"</td><td>"+phone+"</td><td>"+hobbyVal+"</td></tr>";
+            //document.querySelector("#tb1").innerHTML +=
+            //<tr>
+                //<th>document.querySelector("#name").value</th>
+                //<th>document.querySelector("#age").value</th>
+                //<th>document.querySelector("[type=radio]").value</th>
+                //<th>document.querySelector("#phone").value</th>
+                //<th>document.querySelector("[type=checkbox]").value</th>
+            //<tr>   
+            }
     </script>             
 </body>
 </html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #print{
+            height : 100px;
+        }
+        #div2{
+            height : 300px;
+            width : 500px;
+            border : 1px solid black;
+        }
+        ht, td{
+            height : 50px;
+        }
+    </style>
+</head>
+<body>
+    문제2. <br>
+    다음 입력 버튼 클릭시 학생정보를 3명 저장받아(for문 사용) <br>
+    테이블을 생성하여 출력하는 코드를 작성하여라. <br>
+    단, 학생 정보는 객체로 처리하여 저장후 테이블에 입력하고<br>
+    모든 학생 정보는 객체 배열에 저장하여 console.log(objectArr)로 출력시 <br>
+    객체 배열 정보가 console.log에 나와야 함 <br>
+    <div id="div2">
+            <table id="memberInfo" border="1px" width="300px" height="250px">
+                <tr><th>이름</th><th>나이</th><th>주소</th></tr>
+                <tr><td name="name"></td><td name="age"></td><td name="addr"></td></tr>
+                <tr><td name="name"></td><td name="age"></td><td name="addr"></td></tr>
+                <tr><td name="name"></td><td name="age"></td><td name="addr"></td></tr>
+            </table>
+    </div>  
+    <labal style="color:red;">학생정보 테이블</labal>       
+    <button onclick="student();">입력 및 출력</button>
+        
+    <script>
+        function student(){
+            var objectArr = [];
+            var nameTag = document.querySelectorAll("[name=name]");
+            var ageTag = document.querySelectorAll("[name=age]");
+            var addressTag = document.querySelectorAll("[name=addr]");
+            for(i=0; i<3; i++){
+               var student = new Object();//얘가 밖에 있음 덮어씌워짐
+               student.name = prompt((i+1)+"번째 이름?");
+               student.age = prompt((i+1)+"번째 나이?");
+               student.address = prompt((i+1)+"번째 주소?");
+               //이건 또 왜 
+               //var name = prompt();
+               //student.name = name; 이랬을때 undefined에값붙어서 나오니ㅠ              
+               objectArr.push(student);  
+               nameTag[i].innerHTML = student.name;
+               ageTag[i].innerHTML = student.age;        
+               addressTag[i].innerHTML = student.address;  
+            } 
+            console.log(objectArr);
+           
+        }
+    </script>
+</body>
+</html>
