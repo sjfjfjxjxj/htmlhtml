@@ -101,6 +101,16 @@
         }
 
         function jsobject4(){
+            /*
+            var game = {
+                "title" :"LOL",
+                "price" :"free",
+                "language" :"한국어",
+                "supportOS" :"AnyPlatform",
+                "service" : true;
+            }
+            */
+
             var game = {};
             game.title = "LOL";
             game.price = "free";
@@ -112,7 +122,7 @@
             divTag4.innerHTML += game.title + "<br>";
             for(var keyword in game){
                 divTag4.innerHTML += keyword + " : " + game[keyword] +"<br>";
-            }
+            }                                      //야 대괄호 조심혀
         }
 
         function jsobject6(){
@@ -132,6 +142,23 @@
             document.querySelector("#area6").innerHTML = person.toString();
             delete(person.dream); //키값 삭제
             document.querySelector("#area6").innerHTML = person.toString();
+        }
+
+        function jsobject_JSON(){//으로 쓰면
+            var persont = {
+                "name" : "일용자",
+                "hobby" : "낚시,수영,코딩",
+                "strength" :"자바",
+                "dream" :"웹개발자",
+                "toString" : function(){
+                    var str="";
+                    for(var keyword in person){
+                        if(keyword != "toString"){
+                            str += keyword + " : " + person[keyword] + "<br>";
+                        }
+                    }
+                }
+            }
         }
 
     </script>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript ES6</title>
+</head>
+<body>
+    <h1>Javascript ES6</h1>
+    <p>변수의 호이스팅-<br> 선언되지 않은 변수를 사용하더라도 자동으로 선언해 사용하는 현상</p>
+    
+    <script>
+        let calculator = (num1, num2)=> num1+num2;
+        document.write("두 수의 합: "+calculator(5,10)+"<br>");
+
+
+        const sayHelloToFriend = (friend) => {
+            document.write(friend+" 안녕ㅎ");
+        }
+        sayHelloToFriend("일용자야");
+
+        
+        let sayHi = ()=> "안녕하세요"; //한줄로 표현할때 리턴, 중괄호 몽땅 생략 가능
+        //화살표함수
+        const printMember = ()=>{
+            console.log("화살표 함수로 변경해봄");
+        }
+
+
+        const insertMember = function(){
+            //변하지 않는 함수로서 기능...!
+            console.log("const로 선언한 변수에 초기화");
+        }
+        function exConst(){
+            const number = 1;
+            console.log(number);
+            number = 2;
+            console.log(number); //Assignment to constant variable. 상수인가보다. 재할당 불가
+        }
+
+
+        function letForLoop(){
+            //let i = 5; 얘를 써줘야 밑에 exForLoop()처럼 동작
+            for(let i=1; i<5; i++){
+                console.log(i);
+            }
+            console.log(i); //i is not defined
+        }
+
+
+        function exLet(){
+            console.log(number); //Cannot access 'number' before initialization
+            let number; //얘가 제일 위로 올라가고 콘솔로그 찍고 초기화했을떄->is not defined
+            number=2;
+        }
+
+
+        function exForLoop(){
+            for(var i=1; i<5; i++){
+                console.log(i) //1, 2,3,4
+            }
+            console.log(i); //5 출ㄺ됨(맨 위에 var i;라고 선언된것처럼)
+        }
+
+
+        function varHoisting(){
+            console.log(number); //hoisting 돼서 undefined로 뜸
+            var number;
+            number = 1;
+        }
+
+    </script>
+</body>
+</html>
