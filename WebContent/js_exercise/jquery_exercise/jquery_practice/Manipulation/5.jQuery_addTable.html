@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 조작 메소드★요거 많이 쓰인대(댓글같은거!)</title>
+    <script src="../../../../js/jquery-3.6.3.min.js"></script>
+    <style>
+        table { border : 1px solid black; }
+        th,td { border : 1px solid black; }
+    </style>
+</head>
+<body>
+    <script>
+
+        const add =() => {
+            //let title = $("[name=title]").val();
+            //let content = $("[name=content]").val();
+            //let writer = $("[name=owner]").val();
+            //$("table").append("<tr><td>"+title+"</td><td>"+content+"</td><td>"+writer+"</td></tr>");
+            //$("[name=title]").val("");
+            //$("[name=content]").val("");
+            //$("[name=owner]").val("");
+            //입력되면서 옮겨가는것처럼 보이게끔 입력창 비워주기!!
+
+            let title = document.querySelector("[name=title]").value;
+            let content = document.querySelector("[name=content]").value;
+            let writer = document.querySelector("[name=owner]").value;
+            ("table").append("<tr><td>"+title+"</td><td>"+content+"</td><td>"+writer+"</td></tr>");
+            //안됨 나중에!!
+        }
+
+    </script>
+
+    제목 : <input type="text" name="title"><br> 
+    내용 : <input type="text" name="content"><br>
+    작성자 : <input type="text" name="owner"><br>
+    <input type="button" value="테이블에 추가" onclick="add();">
+    <table>
+    
+        <tr>
+            <td>제목</td>    
+            <td>내용</td>
+            <td>작성자</td>
+        </tr>
+    
+    </table>    
+</body>
+</html>

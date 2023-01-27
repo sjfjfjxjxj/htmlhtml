@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery filter() 메소드(select박스)</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+    <select>
+        <option value="1" selected="selected">1번</option>
+        <option value="2">2번 </option>
+        <option value="3">3번 </option>
+    </select>
+    <br />
+    <input type="button" value="Select 버튼 확인" onclick="selectBtn()" />
+    <br><br>
+
+    <script>
+        const selectBtn=()=>{
+            var selectedTag = $("option").filter(":selected");
+            //.val()이랑 .value
+            console.log(selectedTag.val()+"번");
+            //selectedTag.value 이렇게 쓰면 안되고 selectedTag[0].value가넝
+            console.log(selectedTag[0].value+"번");
+            //.html이랑 .innerHTML
+            console.log(selectedTag.html());
+            console.log(selectedTag[0].innerHTML);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 조작 메소드☆첨부파일!!after() remove() length</title>
+    <script src="../../../../js/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+    <script>
+        const addFile =() => {
+            //$("[type=file]").after("<input type='file'>"); 이러면 추가누를때마다 2제곱개씩 늘어남ㅋㅋ
+            $("input").last().after("<input type='file'>");
+        }
+
+        const delFile = function(){
+            var inputLength = $("[type=file]").length;
+            if(inputLength>1){
+                $("input").last().remove();           
+            }
+        }
+        //이거 개행하려면 div 너비 정해줘야함. 안정해주면 옆으로 붙을수밖에 없음
+    </script>
+    <div>
+        <input type="file">
+        <input id="add" type="button" value="추가" onclick="addFile();">
+        <input type="button" value="삭제" onclick="delFile();">
+    </div>
+    <br>    
+</body>
+</html>
