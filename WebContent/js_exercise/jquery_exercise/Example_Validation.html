@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입 유효성체크(정규표현식)</title>
+<script src="../../js/jquery-3.6.3.min.js"></script>
+</head>
+    <style>
+        fieldset{
+            height:400px;
+            width:400px;
+        }
+    </style>
+<body>
+
+    <script>
+        //바디 바로 밑에서 스크립트 쓸때는 이렇게 써야하는데, 
+        //= window.onload
+        //= document.addEventListener("DOMContentLoaded")
+        //= $(docmuent).ready(function(){})
+        $(function(){
+            //$("form").on("submit", function(){
+                //})
+            })
+            //return false; 밑에 태그에 return때문에 이렇게 안씀
+
+
+            function check(){
+                let userId = $("#user_id"); 
+                let userPw = $("#pw");
+                let userPwRe = $("#pw_re");
+                let userName = $("#user_name");
+                let userAddr = $("#addr");
+                let userpost1 = $("#post_1");
+                let userpost2 = $("#post_2");
+                let userEmail = $("#email");
+
+                let msgTag = $("#message");
+                //var target = userId.val();
+                let idRegExp = /^[a-z][a-z0-9]{3,11}$/; //한자릿수 소문자+소문자or숫자3~11자리
+                let pwRegExp =/^[a-zA-z0-9]{8,12}$/;
+                let nameRegExp = /[ㄱ-힣]+$/; //+반복: 한글이 반복되는거 검출!
+                let addrRegExp = /[a-zA-Z]+$/; //영어만 검출->
+                let emailRegExp = /^[a-z0-9]{4,12}@/;
+                let post1RegExp = /[0-9]+$/;
+                let post2RegExp = /[0-9]+$/;
+                //let pwreRegExp = pwRegExp; 이거안됨
+                if(!idRegExp.test(userId.val())){
+                    userId.css("background-color", "red");
+                    msgTag.html("영소문자로 시작하고 영소문자+숫자 4~12자리를 입력하세요!");
+                    return false;
+                }else if(!pwRegExp.test(userPw.val())){
+                    $("input").css("background-color", "white");
+                    userPw.css("background-color", "red");
+                    msgTag.html("영대/소문자,숫자 8~12자리입력바람");
+                    return false;
+                }else if(userPw.val() !== userPwRe.val()){
+                    $("input").css("background-color", "white");
+                    userPw.css("background-color", "red");
+                    userPwRe.css("background-color", "red");
+                    msgTag.html("입력한 비밀번호가 맞지 않습니다");
+                    return false;
+                }else if(!nameRegExp.test(userName.val())){
+                    $("input").css("background-color", "white");
+                    userName.css("background-color", "red");
+                    msgTag.html("한글써!!!!!");
+                    return false;
+                }else if(addrRegExp.test(userAddr.val())|| userAddr.val()==""){ 
+                    $("input").css("background-color", "white");
+                    userAddr.css("background-color", "red");
+                    msgTag.html("영어사용불가!!!!!!반드시 입력!!!!!!");
+                    return false;
+                }else if(!(post1RegExp.test(userpost1.val())) || !(post2RegExp.test(userpost2.val()))){
+                    $("input").css("background-color", "white");
+                    userpost1.css("background-color", "red");
+                    userpost2.css("background-color", "red");
+                    msgTag.html("숫자만 입력!!!!!!");
+                    return false;
+                    //아 왜 엘스이프 발동 안하고 return true로 넘어가냐ㅜㅜ
+                }else if(emailRegExp.test(userEmail.val())){
+                    $("input").css("background-color", "white");
+                    userEmail.css("background-color", "red");
+                    msgTag.html("아이디는 영어소문자, 숫자 4~12자리 입력하쎄요!!!!!");
+                    return false;
+                }else if(!(/^010$/.test$(("#tel1").val())) || !(/\d{3,4}/.test($("#tel2").val())) || !(/\d{4}/.test($("#tel3").val()))){
+                    $("input").css("background-color", "white");
+                    $("#tel1").css("background-color", "red");
+                    $("#tel2").css("background-color", "red");
+                    $("#tel3").css("background-color", "red");
+                    msgTag.html("010-xxxx-xxxx! or 010-xxx-xxxx!!");
+                    return false;
+                }
+                return true;
+                //생락해도 됨.
+            }
+/*
+        var check=()=>{
+            //1
+            document.querySelector("[type='submit']").addEventListener("click", function(){
+                var target = document.querySelector("#user_id").value;
+                var regExp = /^[a-z]{4,12}/
+                //소문자로 시작하고 영소문자,숫자만 가능. 자릿수 4~12
+                
+            })
+
+
+            //4 한글 한글자이상
+            document.querySelector("[type='submit']").addEventListener("click", function(){
+                var target = document.querySelector("#user_name").value;
+                var regExp = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{1, }/;
+                if(regExp.test(target)){
+                    
+                    }else{
+
+                    }
+                })
+
+             //5 영어불가 공백불가
+            document.querySelector("[type='submit']").addEventListener("click", function(){
+            var target = document.querySelector("#user_addr").value;
+            var regExp = /\S[^a-Z]/;
+                if(regExp.test(target)){
+                    
+                }else{
+
+                }
+            })
+
+            //8 필드1 010만 가능 필드2 3~4자리 이상 필드3 4자리
+            document.querySelector("[type='submit']").addEventListener("click", function(){
+            var target = document.querySelector("#tel1").value;
+            var regExp = /^010$/;
+                if(regExp.test(target)){
+                    console.log("ㅇ");
+                }else{
+                    return false;
+                }
+            })
+            document.querySelector("[type='submit']").addEventListener("click", function(){
+            var target = document.querySelector("#tel2").value;
+            var regExp = /^[0-9]{3,4}$]/;
+                if(regExp.test(target)){
+                    console.log("ㅇ");
+                }else{
+                    return false;
+                }
+            })
+            document.querySelector("[type='submit']").addEventListener("click", function(){
+            var target = document.querySelector("#tel3").value;
+            var regExp = /^[0-9]{4}$]/;
+                if(regExp.test(target)){
+                    console.log("ㅇ");
+                }else{
+                    return false;
+                }
+            })
+            
+
+
+            //return false;
+        }
+*/
+
+        
+    </script>
+    
+        문제<br>
+    회원가입시 각 필드마다 유효성 검사를 하여 처리 할 수 있도록 만들어라. <br>
+    1. ID는 영어소문자,숫자만 가능해야함(4~12자리,소문자로 시작해야함) <br>
+    2. PW는 영어소문자,대문자,숫자만 입력 가능해야 하고 (최소 8~12자리) <br>
+    3. PW와 PW_re는 같아야 함<br>
+    4. NAME은 무조건 한글만 가능해야 함(최소1글자 이상)<br>
+    5. 주소에는 영어 사용 불가(칸이 비지 말라)<br>
+    6. 우편번호는 무조건 숫자만 입력 가능해야 함<br>
+    7. 이메일은 @가 포함 되어야 함(@앞에가 영문자,숫자로  4~12글자 ) <br>
+    8. 전화번호는 첫번째 필드는 010만 입력 가능 해야 함 <br>
+                두번째 필드는 3자리 이상 입력 해야 함 <br>
+                세번째 필드는 무조건 4자리 입력 해야함 <br>
+               (모두 숫자만 가능 해야함) <br>
+    
+<center>
+
+    <fieldset>
+        <legend>회원가입</legend>
+<pre>
+<span id="message" style="color:blue;"></span>
+            <form action="join" method="post">
+ID :        <input type="text" id="user_id" /><br>
+PW :        <input type="password" id="pw" /><br>
+PW_re :     <input type="password" id="pw_re" /><br>
+NAME :      <input type="text" id="user_name" /><br>
+ADDRESS :   <input type="text" id="addr" /><br>
+POST NUMBER:  <input type="text" size="5" id="post_1" /> - <input type="text" size="5" id="post_2" /> <br>
+E-MAIL :    <input type="text" id="email" /><br>
+PHONE :     <input type="text" id="tel1" size="2" maxlength="3" />-<input type="text" id="tel2" size="2" maxlength="4" />-<input type="text" id="tel3" size="2" maxlength="4" /><br>
+<input type="submit" value="회원가입" onclick="return check();"/>  <input type="reset" value="취소" />
+                                            <!--on("submit", function(){return false})로 안써도 -->
+                                            <!--function check(){return false}이 효과를 줌--> 
+                </form>                
+</pre>
+    </fieldset>
+</center>
+
+</body>
+</html>
+    
+    
+    
+    
+    
+    

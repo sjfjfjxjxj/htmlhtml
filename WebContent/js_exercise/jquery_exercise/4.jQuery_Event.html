@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 이벤트</title>
+    <script src="../../js/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+    <script>                    //[이벤트명들] 더블클릭이면 "dblclick"
+        $(function(){           //클릭할거면 "click", 마우스댈거면"mouseover"
+            $("#div-hover").on("mouseover", function(){
+                //이벤트가 발생한 자기 자신, $("#div-hover")
+                //쓸숟 ㅗ있지만 this사용할수도잇음
+                $(this).css("background-color", "pink");
+            });
+            $("#click").on("click", function(){
+                alert("clicked");
+            });
+            $("#dblclick").on("dblclick", function(){
+                alert("double clicked");
+            });
+            //mousedown 마우스누르고있을때 / mouseup
+            $("#div-updown").on("mouseup", function(){
+                $(this).css("background-color", "red");
+            })
+            $("#div-updown").on("mousedown", function(){
+                $(this).css("background-color", "blue");
+            })
+        })
+        //페이지 영역 전체에 대해서 이벤트걸기.
+        $(document).on("mousemove", function(event){
+            $("#span1").html("x: "+ event.pageX + ", y: " + event.pageY);
+            //console.log("x: "+ event.pageX + ", y: " + event.pageY)
+        })
+
+        //키업-뗄때, 키프레스-누를떄
+        //keydown: 한글감지
+        //keypress: 숫자, 영어 감지
+        $(function(){
+            $("textarea").on("keyup", function(){
+                let inputCount = $(this).val().length;
+                $("#noti").html("작성가능한 글자수 :" + (150 - inputCount));
+            });
+
+            //form 이벤트. ★★★이것이 유효성 체크!
+            //(아니면 input 태그 안에 required<-값 비어있는지만 체크. 이거쓰면 요 함수 못씀)
+            //이 위에 이벤트들은 return true가 생략돼있음.
+            //submit은 트루 펄스를 이용해야혀
+            $("#my-form").on("submit", function(){
+                //if(id, pw 입력 완료)->return true
+                //else -> return false
+                let userId = $("#userId").val();
+                let userPw = $("#userPw").val();
+                if(userId == ""){//값이 비어있음 제출 안눌림
+                    alert("id없");
+                    return false;
+                }else if(userPw ==""){
+                    alert("pw없");
+                    return false;
+                }
+            })
+            //input 태그의 커서와 관련된 이벤트:
+            //focus(커서 있음). blur(커서없음)
+            $("#userId").on("focus", function(){
+                $(this).css("background-color", "green");
+            });
+            $("#userId").on("blur", function(){
+                $(this).css("background-color", "blue");
+            })
+            //체크햇을대
+            //#check-item 밑 쳌박 전부 체크되는거
+            //체크해제햇을대
+            //#check-item 밑 쳌박 모두 체크 해제된넉
+            $("#allCheck").on("change", function(){
+                //prop 요것도 가능한데 attr이 확실하대
+                var checkBoxes = $("#check-item").children();
+                if($(this).is(":checked")){
+                    checkBoxes.attr("checked", "checked");
+                }else{
+                    checkBoxes.removeAttr("checked");
+                }
+            })
+            //이벤트 버블링 막기, 기본 이벤트 제거
+            $("#h1-click").on("click", function(){
+                alert("h1 click");
+            })
+            $("#span-click").on("click", function(e){
+                e.stopPropagation();
+                alert("span click");
+                //return false;
+            }) 
+            //h1이 span 부모임 ㅇㅇ 둘다 걸려있으면 자식 선택했을때 부모것까지 이벤트나옴. 
+            //1. return false;
+            //2. 메소드 e.stopPropagation();
+            $("a").on("click", function(e){
+                e.preventDefault();//페이지 이동 방지!(기본 이벤트 제거)
+                alert("a click");
+                //아니면 return false;
+                //아니면 인라인에 href=javascript:void(0);
+                //이제 유효성검사를 할 떄가 오고있당... 정규표현식으로.....!
+            })
+        })
+    </script>
+
+    <h1>이벤트</h1>
+    <p>
+        사용자가 마우스를 클릭하거나 마우스를 움직여 특정화면 위로 가져가거나 키보드를 누르는 행위를 이벤트라고 부름
+        <br>jQuery에서는 event객체를 통해서 이벤트를 제어함.
+    </p>
+    <h3>마우스오버 이벤트</h3>
+    <div id="div-hover" style="border:3px solid black;width:100px;height:100px"></div>
+    <h3>클릭 / 더블클릭 이벤트</h3>
+    <p id="click">click</p>
+    <p id="dblclick">double click</p>
+    <p></p>
+    <h3>마우스업/다운 이벤트(클릭하고있을때 / 뗐을때!)</h3>
+    <div id="div-updown" style="border:3px solid black;width:100px;height:100px"></div>
+    <h3>마우스이동 이벤트</h3>
+    <h1>
+        Mouse is a coordinate :
+        <span id="span1"></span>
+    </h1>
+    <h3>[여기서부터 키보드 관련]키업/키프레스/키다운 이벤트</h3>
+    <div>
+        <p>글 작성</p>
+        <h1 id="noti">작성가능한 글자수 : 150</h1>
+        <textarea name="" id="" cols="60" rows="5"></textarea>
+    </div>
+    <h1>입력 양식(form) 이벤트</h1>
+    <h3>★외우기!!!!: submit / focus / blur</h3>
+    <form id="my-form" action="result.html">
+        ID : <input type="text" name="userId" id="userId">
+        PW : <input type="password" name="userPw" id="userPw">
+        <input type="submit" value="제출">
+        <input type="reset" value="취소">
+    </form>   
+    <h3>change</h3>
+    <p>
+        ★중요!!! 활용도!!! input태그의 type속성이 checkbox, radio인 input태그와 select태그의 상태 변경을 감지하는 이벤트
+    </p>
+    전체 : <input type="checkbox" name="allCheck" id="allCheck"> <br>
+    <div id="check-item">
+        <input type="checkbox" name="" id=""> A
+        <input type="checkbox" name="" id=""> B
+        <input type="checkbox" name="" id=""> C
+    </div> 
+    <h3>이벤트 버블링 막기 및 기본 이벤트 제거</h3>
+    <p>
+        stopPropagation() : 이벤트 전달 제거 <br>
+        preventDefault() : 기본 이벤트 제거
+    </p>
+    <h1 id="h1-click">
+        <span id="span-click">click</span>
+    </h1>
+    <h1>
+        <a href="http://www.iei.or.kr">kh정보교육원</a>
+    </h1>
+
+</body>
+</html>
